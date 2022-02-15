@@ -1,22 +1,14 @@
-import React, { FC } from "react";
-import { Button } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-import styles from "./index.module.scss";
+import React, { FC } from 'react';
+import { Button } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import styles from './index.module.scss';
 
-const Index: FC<{}> = () => {
-  let button = (
-    <Button type="primary">
-      <LoadingOutlined />
-      Index
-    </Button>
-  );
-  return (
-    <div className="index-page">
+const Index: FC = () => {
+    return (
+        <div className="index-page">
       index page
-      <br />
-      {button}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Index;
