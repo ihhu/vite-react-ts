@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.less";
 import Router from "@/router/index";
 
 function App() {
@@ -8,12 +8,11 @@ function App() {
 
   return (
     <div className="App">
-    <div>
-      <Router></Router>
-    </div>
       <header className="App-header">
+
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
+        <Router></Router>
         <p>
           <button type="button" onClick={() => setCount(count => count + 1)}>
             count is: {count}
