@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Button } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const Index: FC<{}> = () => {
   let button = (

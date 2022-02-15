@@ -30,5 +30,10 @@
     "./src",
     "typings",
     "@types/node"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }

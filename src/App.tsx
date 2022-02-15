@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-import routes from "@/router/index";
+import Router from "@/router/index";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,15 +9,7 @@ function App() {
   return (
     <div className="App">
     <div>
-      <Router>
-        <Switch>
-          {routes.map(route => (
-            <Route exact key={route.path} path={route.path}>
-              <route.component></route.component>
-            </Route>
-          ))}
-        </Switch>
-      </Router>
+      <Router></Router>
     </div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
