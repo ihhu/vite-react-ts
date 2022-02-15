@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
-import { ConfigProvider } from 'antd';
 import './App.less';
-import Router from '@/router/index';
+import React, { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import * as localeState from '@/recoil/locale';
+import { ConfigProvider } from 'antd';
+import Routers from '@/router/index';
 
+import i18n from '@/i18n';
+
+import en_US from 'antd/lib/locale/en_US';
+import zh_CN from 'antd/lib/locale/zh_CN';
+const LOCALE = {
+    'zh-CN': zh_CN,
+    'en-US': en_US,
+};
 function App() {
-    const [count, setCount] = useState(0);
+    const currentLocale = useRecoilValue(localeState.currentLocal);
+    useEffect(() => {
+        i18n.init({
+            lng: currentLocale,
+            fallbackLng: currentLocale,
+        });
+    }, [currentLocale]);
 
     return (
-        <ConfigProvider>
+        <ConfigProvider locale={LOCALE[currentLocale]}>
             <div className="App">
                 <header className="App-header">
                     <p>Hello Vite + React!</p>
-                    <Router></Router>
-                    <p>
-                        <button type="button" onClick={() => setCount(count => count + 1)}>
-              count is: {count}
-                        </button>
-                    </p>
+                    <Routers></Routers>
                     <p>
             Edit <code>App.tsx</code> and save to test HMR updates.
                     </p>
