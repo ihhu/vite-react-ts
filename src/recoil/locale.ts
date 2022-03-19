@@ -9,7 +9,7 @@ interface LocaleInfo {
 }
 
 export const localeList = atom<LocaleInfo[]>({
-    key: KEYS.currentLocale,
+    key: KEYS.localeList,
     default: [{ id: 'zh-CN', value: '简体中文' }, { id: 'en-US', value: 'English' },]
 });
 
