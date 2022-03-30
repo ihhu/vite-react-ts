@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Loading from '@/components/Loading';
 
 function asyncRoute<T>(RouteComponent: React.ComponentType<T>) {
-    const Component =  function (props: T) {
+    const Component = function (props: T) {
         return (
             <Suspense fallback={<Loading />}>
                 <RouteComponent {...props} />
