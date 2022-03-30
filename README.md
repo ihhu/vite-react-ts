@@ -10,3 +10,21 @@
 [x] `recoil` 状态管理
 
 [x] `eslint` 配置
+
+
+
+
+## 如何升级到 React 18
+
+```
+// Before
+import { render } from 'react-dom';
+const container = document.getElementById('app');
+render(<App tab="home" />, container);
+
+// After
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(<App tab="home" />);
+```
