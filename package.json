@@ -6,6 +6,7 @@
     "build": "tsc && vite build -c ./build/vite.config.ts",
     "preview": "vite preview",
     "tsc": "tsc --watch",
+    "prepare": "husky install",
     "preinstall": "npx only-allow pnpm"
   },
   "husky": {

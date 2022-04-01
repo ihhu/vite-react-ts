@@ -28,3 +28,7 @@ const container = document.getElementById('app');
 const root = createRoot(container);
 root.render(<App tab="home" />);
 ```
+
+## 使用`husky`创建git勾子
+
+https://typicode.github.io/husky/#/
