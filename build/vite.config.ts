@@ -30,7 +30,8 @@ const base = defineConfig({
             less: {
                 javascriptEnabled: true,
                 // 重写 less 变量，定制样式
-                modifyVars: themeVariables
+                modifyVars: themeVariables,
+                additionalData:'@import "@/assets/less/mixin.less";'
             }
         }
     }
