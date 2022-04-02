@@ -1,32 +1,30 @@
 import './App.less';
-import React, { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
-import * as localeState from '@/recoil/locale';
+import React, { useState, useEffect } from 'react';
 import { ConfigProvider } from 'antd';
 import Routers from '@/router/index';
 
-import i18n from '@/i18n';
+import { useI18n } from '@/i18n';
 
-import en_US from 'antd/lib/locale/en_US';
-import zh_CN from 'antd/lib/locale/zh_CN';
-const LOCALE = {
-    'zh-CN': zh_CN,
-    'en-US': en_US,
+import zhCN from 'antd/lib/locale/zh_CN';
+import enUS from 'antd/lib/locale/en_US';
+const LOCALE: { [props: string]: any } = {
+    'zh-CN': zhCN,
+    'en-US': enUS,
+    default: zhCN,
 };
-function App() {
-    const currentLocale = useRecoilValue(localeState.currentLocal);
-    useEffect(() => {
-        i18n.init({
-            lng: currentLocale,
-            fallbackLng: currentLocale,
-        });
-    }, [currentLocale]);
 
-    return (
-        <ConfigProvider locale={LOCALE[currentLocale]}>
-            <Routers></Routers>
-        </ConfigProvider>
-    );
+function App() {
+    const { init, getCurrentLocale } = useI18n();
+    const [loading, setLoading] = useState(true);
+    const [locale, setLocale] = useState(LOCALE['default']);
+    useEffect(() => {
+        init().then(() => {
+            setLoading(false);
+            setLocale(LOCALE[getCurrentLocale()] ?? LOCALE['default']);
+        });
+    }, []);
+
+    return <ConfigProvider locale={locale}>{!loading ? <Routers /> : null}</ConfigProvider>;
 }
 
 export default App;
