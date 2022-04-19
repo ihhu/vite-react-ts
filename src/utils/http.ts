@@ -21,13 +21,16 @@ const HTTP_STATUS = {
 // star 取消重复请求 ========================
 const pending: { [props: string]: Canceler } = {}; //声明一个数组用于存储每个请求的取消函数和axios标识
 const cancelToken = axios.CancelToken;
+function getPaddingKey(req: AxiosRequestConfig<any>){
+    return typeof req.cancel === 'string' ? req.cancel : req.url + JSON.stringify(req.data) + '&' + req.method;
+}
 function removePending(flag: string) {
     pending[flag]?.();
     delete pending[flag];
 }
 function addCancelToken(req: AxiosRequestConfig<any>) {
     if (req.cancel) {
-        const flag: string = req.url + JSON.stringify(req.data) + '&' + req.method;
+        const flag: string =  getPaddingKey(req);
         removePending(flag);
         req.cancelToken = new cancelToken((c) => {
             // 这里的axios标识我是用请求地址&请求方式拼接的字符串，当然你可以选择其他的一些方式
@@ -71,7 +74,7 @@ http.interceptors.request.use((req) => {
 http.interceptors.response.use(response => {
     const requestConfig = response.config;
     if (requestConfig.cancel) {
-        const flag = requestConfig.url + JSON.stringify(requestConfig.data) + '&' + requestConfig.method;
+        const flag =getPaddingKey(requestConfig);
         removePending(flag);
     }
 
@@ -117,7 +120,7 @@ http.interceptors.response.use(response => {
 }, function (error) {
     const requestConfig = error.config;
     if ((requestConfig as AxiosRequestConfig<any>)?.cancel) {
-        const flag = requestConfig.url + JSON.stringify(requestConfig.data) + '&' + requestConfig.method;
+        const flag = getPaddingKey(requestConfig);
         removePending(flag);
     }
     if (axios.isCancel(error)) {

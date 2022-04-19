@@ -6,8 +6,6 @@ import react from '@vitejs/plugin-react';
 import legacy from '@vitejs/plugin-legacy';
 // 按需引入 https://github.com/onebay/vite-plugin-imp/issues
 import imp from 'vite-plugin-imp';
-// 模块加载情况 https://github.com/antfu/vite-plugin-inspect
-import inspect from 'vite-plugin-inspect';
 // https://github.com/michaeltaranto/less-vars-to-js
 import lessToJS from 'less-vars-to-js';
 
@@ -16,7 +14,7 @@ import { defineConfig } from 'vite';
 import { path as _path, server, env, alias } from './config';
 
 const themeVariables = lessToJS(
-    fs.readFileSync(path.join(_path.src, 'antd', 'variables.less'), 'utf8')
+    fs.readFileSync(path.join(_path.src, 'assets', 'less',  'variables.less'), 'utf8')
 );
 
 // base config
@@ -72,7 +70,6 @@ export default defineConfig({
         }),
         legacy({
             targets: ['defaults', 'not IE 11']
-        }),
-        inspect()
+        })
     ]
 });

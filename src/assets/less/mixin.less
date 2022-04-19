@@ -29,3 +29,25 @@
   display: -webkit-box;-webkit-line-clamp:@line;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;
 }
 .ellipsis(@line:1) when(default()){overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+
+.scroll(@width:6px,@color:#333){
+  &::-webkit-scrollbar {width: @width;height:@width;display: block;
+    .phone({
+      &{display:none;width:0;}
+    });
+  } /* px-to-viewport-ignore */
+  /* Handle样式 */
+  &::-webkit-scrollbar-thumb {background-color: @color;} /* px-to-viewport-ignore */
+  /*hover到滚动条上*/
+  &::-webkit-scrollbar-thumb:vertical:hover {background-color: darken(@color,5%);}
+  /*滚动条按下*/
+  &::-webkit-scrollbar-thumb:vertical:active {background-color: darken(@color,10%);}
+    
+  
+}
+.phone(@content,@width:@phone-width){
+  @media screen and (max-width: @width){
+    @content()
+  }
+}
