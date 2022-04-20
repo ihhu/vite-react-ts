@@ -5,7 +5,7 @@ import Routes from './route-list';
 const RouterContext: FC = () => {
     return (
         <BrowserRouter>
-            <Routes/>
+            <Routes />
         </BrowserRouter>
     );
 };

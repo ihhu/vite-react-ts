@@ -20,7 +20,6 @@ const Routes: FC = () => {
         { path: '/about', element: <About /> },
         { path: '/404', element: <NotFound /> },
         { path: '*', element: <Navigate to="/404" replace /> },
-
     ]);
     return element;
 };

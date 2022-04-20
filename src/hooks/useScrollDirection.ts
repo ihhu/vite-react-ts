@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-const useScrollDirection = (offset=0) => {
+const useScrollDirection = (offset = 0) => {
     const [scrollDirection, setScrollDirection] = useState<string | null>(null);
     const [prevOffset, setPrevOffset] = useState(0);
     const toggleScrollDirection = () => {

@@ -50,24 +50,13 @@ interface uploadOptions {
 }
 
 export async function uploadFile(files: File[], uploadOptions: uploadOptions = {}) {
-    const module = uploadOptions.module??'requirement';
-    const usePrivate = uploadOptions.usePrivate??false;
+    const module = uploadOptions.module ?? 'requirement';
+    const usePrivate = uploadOptions.usePrivate ?? false;
     const aliCloudStorageToken = await getToken();
     if (!aliCloudStorageToken) {
         return Promise.reject({ message: 'token 获取失败' });
     }
-    const {
-        ossStoragePath,
-        aliCloudAccessKeyId,
-        aliCloudAccessKeySecret,
-        aliCloudSecurityToken,
-        aliCloudExpireTime,
-        regionId,
-        ossEndpoint,
-        privateBucketName,
-        publicBucketName,
-        publicStorageDomainUrl,
-    } = aliCloudStorageToken;
+    const { ossStoragePath, aliCloudAccessKeyId, aliCloudAccessKeySecret, aliCloudSecurityToken, aliCloudExpireTime, regionId, ossEndpoint, privateBucketName, publicBucketName, publicStorageDomainUrl } = aliCloudStorageToken;
 
     const uploadFiles = getUploadFileInfo(files, ossStoragePath ?? '', module);
     console.log(uploadFiles);
@@ -75,7 +64,6 @@ export async function uploadFile(files: File[], uploadOptions: uploadOptions = {
     if (!uploadFiles.length) {
         return [];
     }
-
 
     // TODO 需要install ali-oss模块
     /* const OSS = await import('ali-oss');

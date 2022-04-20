@@ -1,53 +1,80 @@
-.container(){
-  max-width:@container-width;padding:0 20px;margin:0 auto;
+.container() {
+    max-width: @container-width;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 
-.flex(){display:flex;}
-.flex-column(){
-  .flex();flex-direction:column;;
+.flex() {
+    display: flex;
 }
-.flex-c(){
-  .flex();align-items:center;justify-items:center;
+.flex-column() {
+    .flex();
+    flex-direction: column;
 }
-.flex-column-c(){
-  .flex-column();align-items:center;justify-items:center;
+.flex-c() {
+    .flex();
+    align-items: center;
+    justify-items: center;
 }
-.align-c(){
-  .flex();align-items:center;
+.flex-column-c() {
+    .flex-column();
+    align-items: center;
+    justify-items: center;
 }
-.align-column-c(){
-  .flex-column();align-items:center;
+.align-c() {
+    .flex();
+    align-items: center;
 }
-.justify-c(){
-  .flex();justify-items:center;
+.align-column-c() {
+    .flex-column();
+    align-items: center;
 }
-.justify-column-c(){
-  .flex-column();justify-items:center;
+.justify-c() {
+    .flex();
+    justify-items: center;
+}
+.justify-column-c() {
+    .flex-column();
+    justify-items: center;
 }
 
-.ellipsis(@line:1) when(@line>1){
-  display: -webkit-box;-webkit-line-clamp:@line;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;
+.ellipsis(@line:1) when(@line>1) {
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.ellipsis(@line:1) when(default()){overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.ellipsis(@line:1) when(default()) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
-
-.scroll(@width:6px,@color:#333){
-  &::-webkit-scrollbar {width: @width;height:@width;display: block;
-    .phone({
+.scroll(@width:6px,@color:#333) {
+    &::-webkit-scrollbar {
+        width: @width;
+        height: @width;
+        display: block;
+        .phone({
       &{display:none;width:0;}
     });
-  } /* px-to-viewport-ignore */
-  /* Handle样式 */
-  &::-webkit-scrollbar-thumb {background-color: @color;} /* px-to-viewport-ignore */
-  /*hover到滚动条上*/
-  &::-webkit-scrollbar-thumb:vertical:hover {background-color: darken(@color,5%);}
-  /*滚动条按下*/
-  &::-webkit-scrollbar-thumb:vertical:active {background-color: darken(@color,10%);}
-    
-  
+    } /* px-to-viewport-ignore */
+    /* Handle样式 */
+    &::-webkit-scrollbar-thumb {
+        background-color: @color;
+    } /* px-to-viewport-ignore */
+    /*hover到滚动条上*/
+    &::-webkit-scrollbar-thumb:vertical:hover {
+        background-color: darken(@color, 5%);
+    }
+    /*滚动条按下*/
+    &::-webkit-scrollbar-thumb:vertical:active {
+        background-color: darken(@color, 10%);
+    }
 }
-.phone(@content,@width:@phone-width){
-  @media screen and (max-width: @width){
-    @content()
-  }
+.phone(@content,@width:@phone-width) {
+    @media screen and (max-width: @width) {
+        @content();
+    }
 }

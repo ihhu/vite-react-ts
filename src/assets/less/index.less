@@ -1,21 +1,18 @@
 :root {
-  --100vh: 100vh;
+    --100vh: 100vh;
 }
 .scroll(@color:#aaa);
 
 h1,h2,h3,h4,h5,h6,ul,ol,li,p {margin: 0;}
-
-ul,ol,li{list-style:none;padding:0;}
-
-input,textarea{
-  &:focus::placeholder{color:transparent;}
+ul,ol,li {list-style: none;padding: 0;}
+input,textarea {
+    &:focus::placeholder {color: transparent;}
 }
 
-code {font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;}
+code {font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;}
 
 body {
-  a{cursor:default;
-    &[href]{cursor:pointer;}
-  }
+    a {cursor: default;
+        &[href] {cursor: pointer;}
+    }
 }
-

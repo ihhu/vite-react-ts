@@ -14,7 +14,9 @@ const NotFound = () => {
         <div className={styles.content}>
             <img src={errorImage} />
             <div className={styles.tips}>出错了，您访问的页面不存在</div>
-            <Button type="primary" onClick={() => onBack()}>返回首页</Button>
+            <Button type="primary" onClick={() => onBack()}>
+                返回首页
+            </Button>
         </div>
     );
 };

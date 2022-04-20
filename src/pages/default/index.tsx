@@ -1,7 +1,7 @@
 import styles from './index.module.less';
 import React, { FC } from 'react';
 import { Layout } from 'antd';
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 const { Header, Footer, Content } = Layout;
 
 const Default: FC = () => {
@@ -9,7 +9,7 @@ const Default: FC = () => {
         <Layout className={styles.default}>
             <Header>Header</Header>
             <Content>
-                <Outlet/>
+                <Outlet />
             </Content>
             <Footer>Footer</Footer>
         </Layout>
