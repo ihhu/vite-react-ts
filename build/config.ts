@@ -1,4 +1,4 @@
-import path from 'path';
+import {join} from 'path';
 import { ServerOptions } from 'vite';
 
 
@@ -12,9 +12,9 @@ const server: ServerOptions = {
     }
 };
 
-const _path = {
+const dir = {
     cwd: process.cwd(),
-    src: path.join(process.cwd(), 'src'),
+    src: join(process.cwd(), 'src'),
     base: '/',
     outDir: 'dist',
     assetsDir: 'assets',
@@ -27,12 +27,12 @@ const env = {
 };
 
 const alias = {
-    '~': path.join(_path.cwd),
-    '@': path.join(_path.cwd, 'src')
+    '~': join(dir.cwd),
+    '@': join(dir.cwd, 'src')
 };
 
 export {
-    _path as path,
+    dir,
     server,
     env,
     alias

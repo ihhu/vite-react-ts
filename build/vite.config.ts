@@ -1,5 +1,5 @@
 import fs from 'fs';
-import path from 'path';
+import {join} from 'path';
 // 完整的 React 支持 https://github.com/vitejs/vite/tree/main/packages/plugin-react
 import react from '@vitejs/plugin-react';
 // 兼容代码 https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
@@ -11,17 +11,17 @@ import lessToJS from 'less-vars-to-js';
 
 
 import { defineConfig } from 'vite';
-import { path as _path, server, env, alias } from './config';
+import { dir, server, env, alias } from './config';
 
 const themeVariables = lessToJS(
-    fs.readFileSync(path.join(_path.src, 'assets', 'less',  'variables.less'), 'utf8')
+    fs.readFileSync(join(dir.src, 'assets', 'less',  'variables.less'), 'utf8')
 );
 
 // base config
 const base = defineConfig({
     ...env,
-    base: _path.base,
-    publicDir: _path.publicDir,
+    base: dir.base,
+    publicDir: dir.publicDir,
     resolve: { alias },
     css: {
         preprocessorOptions: {
@@ -43,8 +43,8 @@ const dev = defineConfig({
 // build config
 const build = defineConfig({
     build: {
-        outDir: _path.outDir,
-        assetsDir: _path.assetsDir,
+        outDir: dir.outDir,
+        assetsDir: dir.assetsDir,
     }
 });
 
