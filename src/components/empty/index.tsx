@@ -1,10 +1,10 @@
 import styles from './index.module.less';
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { Empty as AntEmpty, EmptyProps } from 'antd';
 
-interface EmptyType extends React.FC<EmptyProps> {
-    PRESENTED_IMAGE_DEFAULT: React.ReactNode;
-    PRESENTED_IMAGE_SIMPLE: React.ReactNode;
+interface EmptyType extends FC<EmptyProps> {
+    PRESENTED_IMAGE_DEFAULT: ReactNode;
+    PRESENTED_IMAGE_SIMPLE: ReactNode;
 }
 
 const Empty: EmptyType = props => {

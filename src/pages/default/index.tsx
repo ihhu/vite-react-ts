@@ -1,5 +1,5 @@
 import styles from './index.module.less';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
 const { Header, Footer, Content } = Layout;

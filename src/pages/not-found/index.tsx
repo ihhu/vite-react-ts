@@ -1,4 +1,3 @@
-import React from 'react';
 import errorImage from '@/assets/images/404.png';
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';

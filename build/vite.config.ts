@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {join} from 'path';
+import { join } from 'path';
 // 完整的 React 支持 https://github.com/vitejs/vite/tree/main/packages/plugin-react
 import react from '@vitejs/plugin-react';
 // 兼容代码 https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
@@ -14,7 +14,7 @@ import { defineConfig } from 'vite';
 import { dir, server, env, alias } from './config';
 
 const themeVariables = lessToJS(
-    fs.readFileSync(join(dir.src, 'assets', 'less',  'variables.less'), 'utf8')
+    fs.readFileSync(join(dir.src, 'assets', 'less', 'variables.less'), 'utf8')
 );
 
 // base config
@@ -29,7 +29,7 @@ const base = defineConfig({
                 javascriptEnabled: true,
                 // 重写 less 变量，定制样式
                 modifyVars: themeVariables,
-                additionalData:'@import "@/assets/less/mixin.less";'
+                additionalData: '@import "@/assets/less/mixin.less";'
             }
         }
     }
@@ -60,7 +60,7 @@ export default defineConfig({
                 {
                     libName: 'antd',
                     style: (name) => {
-                        return `antd/es/${ name }/style`;
+                        return `antd/es/${name}/style`;
                     }
                 }
             ]

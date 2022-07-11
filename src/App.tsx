@@ -1,5 +1,5 @@
 import './App.less';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ConfigProvider } from 'antd';
 import Routers from '@/router/index';
 

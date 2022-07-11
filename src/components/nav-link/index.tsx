@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import { NavLink as BaseNavLink, NavLinkProps as BaseNavLinkProps } from 'react-router-dom';
 
 type NavLinkProps = BaseNavLinkProps & {
@@ -8,7 +8,7 @@ type NavLinkProps = BaseNavLinkProps & {
     style?: React.CSSProperties;
 };
 
-const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(({ activeClassName, activeStyle, ...props }, ref) => {
+const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(({ activeClassName, activeStyle, ...props }, ref) => {
     activeClassName ??= 'on';
     return (
         <BaseNavLink

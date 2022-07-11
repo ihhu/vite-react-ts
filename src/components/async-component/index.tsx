@@ -1,4 +1,4 @@
-import React, { ComponentType, Suspense } from 'react';
+import { ComponentType, Suspense } from 'react';
 import Loading from '@/components/loading';
 
 function asyncComponent<T>(AsyncComponent: ComponentType<T>) {
