@@ -1,5 +1,4 @@
-// https://juejin.cn/post/7100804171388944398#heading-9
-
+// 半成品 vue3代码改造https://juejin.cn/post/7100804171388944398#heading-9
 // /src/hooks/useRequest/axios.ts
 
 import { AppAxiosResponse, RequestResponse } from './types';
