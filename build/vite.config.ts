@@ -1,20 +1,24 @@
-import fs from 'fs';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 // 完整的 React 支持 https://github.com/vitejs/vite/tree/main/packages/plugin-react
 import react from '@vitejs/plugin-react';
-// 兼容代码 https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
-import legacy from '@vitejs/plugin-legacy';
 // 按需引入 https://github.com/onebay/vite-plugin-imp/issues
 import imp from 'vite-plugin-imp';
 // https://github.com/michaeltaranto/less-vars-to-js
 import lessToJS from 'less-vars-to-js';
+
+// 浏览器兼容处理 https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
+// import legacy from '@vitejs/plugin-legacy';
+
+// 自动生成https证书 配合 server.https 使用
+// import basicSsl from '@vitejs/plugin-basic-ssl'
 
 
 import { defineConfig } from 'vite';
 import { dir, server, env, alias } from './config';
 
 const themeVariables = lessToJS(
-    fs.readFileSync(join(dir.src, 'assets', 'less', 'variables.less'), 'utf8')
+    readFileSync(join(dir.src, 'assets', 'less', 'variables.less'), 'utf8')
 );
 
 // base config
@@ -24,6 +28,7 @@ const base = defineConfig({
     publicDir: dir.publicDir,
     resolve: { alias },
     css: {
+        devSourcemap:true,
         preprocessorOptions: {
             less: {
                 javascriptEnabled: true,
@@ -44,7 +49,7 @@ const dev = defineConfig({
 const build = defineConfig({
     build: {
         outDir: dir.outDir,
-        assetsDir: dir.assetsDir,
+        assetsDir: dir.assetsDir
     }
 });
 
@@ -65,8 +70,9 @@ export default defineConfig({
                 }
             ]
         }),
-        legacy({
-            targets: ['defaults', 'not IE 11']
-        })
+        // basicSsl(),
+    /* legacy({
+        targets: ['defaults', 'not IE 11']
+    }) */
     ]
 });
