@@ -56,5 +56,5 @@ export interface IRequestResult<T> {
 export interface ErrorData<T = any> {
     code: number | string;
     data: T;
-    msg: string;
+    message: string;
 }

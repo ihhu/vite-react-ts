@@ -127,3 +127,16 @@ export function request<T>(config: AxiosRequestConfig): RequestResponse<T> {
         cancel: cancel.current,
     };
 }
+
+export function post<T, K extends Record<string, any>>(url: string, data: K, config: AxiosRequestConfig): RequestResponse<T> {
+    const cancel = useRef<Canceler>();
+    return {
+        instance: instance.post(url, data, {
+            ...config,
+            cancelToken: new axios.CancelToken(c => {
+                cancel.current = c;
+            }),
+        }),
+        cancel: cancel.current,
+    };
+}
