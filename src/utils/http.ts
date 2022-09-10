@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, Canceler } from 'axios';
+import axios from 'axios';
 import { message } from 'antd';
 import { getCurrentLocale } from '@/i18n';
 // HTTP 返回的状态码
@@ -17,34 +17,6 @@ const HTTP_STATUS = {
     GATEWAY_TIMEOUT: 504,
     REFRESH_PAGE: 800,
 };
-
-// star 取消重复请求 ========================
-const axiosCancel: {
-    pending: { [props: string]: Canceler };
-    getPendingKey(req: AxiosRequestConfig): string;
-    addCancelToken(req: AxiosRequestConfig): void;
-    removePending(req: AxiosRequestConfig): void;
-} = {
-    pending: {},
-    getPendingKey(req) {
-        return typeof req.cancel === 'string' ? req.cancel : [req.url, JSON.stringify(req.data), '&', req.method].join('');
-    },
-    addCancelToken(req) {
-        if (req.cancel) {
-            this.removePending(req);
-            const key: string = this.getPendingKey(req);
-            req.cancelToken = new axios.CancelToken(c => {
-                this.pending[key] = c;
-            });
-        }
-    },
-    removePending(req) {
-        const key: string = this.getPendingKey(req);
-        this.pending[key]?.();
-        delete this.pending[key];
-    },
-};
-// end ========================
 
 // axios 实例
 const http = axios.create({
@@ -69,22 +41,16 @@ http.interceptors.request.use(
                 req.data = Object.assign({}, exData, req.data);
                 break;
         }
-        axiosCancel.addCancelToken(req);
         return req;
     },
     function (error) {
         // 对请求错误做些什么
         return Promise.reject(error);
-    },
+    }
 );
 // 响应拦截
 http.interceptors.response.use(
     response => {
-        const requestConfig = response.config;
-        if (requestConfig.cancel) {
-            axiosCancel.removePending(requestConfig);
-        }
-
         const result = response.data;
         if (result?.code === HTTP_STATUS.SUCCESS) {
             return result.data;
@@ -125,17 +91,13 @@ http.interceptors.response.use(
         }
     },
     function (error) {
-        const requestConfig = error.config;
-        if ((requestConfig as AxiosRequestConfig)?.cancel) {
-            axiosCancel.removePending(requestConfig);
-        }
         if (axios.isCancel(error)) {
             return Promise.reject(error);
         }
 
         message.error(error.message);
         return Promise.reject(error);
-    },
+    }
 );
 
 export { http };

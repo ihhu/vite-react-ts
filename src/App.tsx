@@ -15,7 +15,7 @@ const LOCALE: { [props: string]: any } = {
 
 function App() {
     const { init, getCurrentLocale } = useI18n();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [locale, setLocale] = useState(LOCALE['default']);
     useEffect(() => {
         init().then(() => {

@@ -30,3 +30,22 @@ export function downloadFile(fileUrl: string) {
         return (error as Error).message ?? '下载文件失败';
     }
 }
+
+/**
+ * 字符串回退显示 '—'
+ * @param text
+ * @returns
+ */
+export function textFallback(text?: string | null) {
+    return text || '—';
+}
+
+/**
+ * 平缓滚动到指定元素
+ */
+export function scrollToTop(selector: string, behavior: ScrollBehavior = 'smooth') {
+    document.querySelector(selector)?.scrollTo({
+        top: 0,
+        behavior,
+    });
+}
