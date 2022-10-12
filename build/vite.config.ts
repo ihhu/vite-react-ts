@@ -28,7 +28,7 @@ const base = defineConfig({
     publicDir: dir.publicDir,
     resolve: { alias },
     css: {
-        devSourcemap:true,
+        devSourcemap: true,
         preprocessorOptions: {
             less: {
                 javascriptEnabled: true,
@@ -67,6 +67,13 @@ export default defineConfig({
                     style: (name) => {
                         return `antd/es/${name}/style`;
                     }
+                },
+                {
+                    libName: 'laiyed',
+                    libDirectory: 'es/components',
+                    style: name => {
+                        return `laiyed/es/components/${name}/index.less`;
+                    },
                 }
             ]
         }),
