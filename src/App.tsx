@@ -1,3 +1,4 @@
+import 'antd/dist/reset.css';
 import './App.less';
 import { useState, useEffect } from 'react';
 import { ConfigProvider } from 'antd';
@@ -5,9 +6,9 @@ import Routers from '@/router/index';
 
 import { useI18n } from '@/i18n';
 
-import zhCN from 'antd/lib/locale/zh_CN';
-import enUS from 'antd/lib/locale/en_US';
-const LOCALE: { [props: string]: any } = {
+import zhCN from 'antd/locale/zh_CN';
+import enUS from 'antd/locale/en_US';
+const LOCALE: Record<string, typeof zhCN> = {
     'zh-CN': zhCN,
     'en-US': enUS,
     default: zhCN,

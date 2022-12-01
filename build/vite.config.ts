@@ -2,8 +2,11 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 // 完整的 React 支持 https://github.com/vitejs/vite/tree/main/packages/plugin-react
 import react from '@vitejs/plugin-react';
+
 // 按需引入 https://github.com/onebay/vite-plugin-imp/issues
+// antd5 不再需要按需引入插件
 import imp from 'vite-plugin-imp';
+
 // https://github.com/michaeltaranto/less-vars-to-js
 import lessToJS from 'less-vars-to-js';
 
@@ -60,23 +63,6 @@ export default defineConfig({
     ...build,
     plugins: [
         react(),
-        imp({
-            libList: [
-                {
-                    libName: 'antd',
-                    style: (name) => {
-                        return `antd/es/${name}/style`;
-                    }
-                },
-                {
-                    libName: 'laiyed',
-                    libDirectory: 'es/components',
-                    style: name => {
-                        return `laiyed/es/components/${name}/index.less`;
-                    },
-                }
-            ]
-        }),
         // basicSsl(),
     /* legacy({
         targets: ['defaults', 'not IE 11']
