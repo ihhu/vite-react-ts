@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 
 // 按需引入 https://github.com/onebay/vite-plugin-imp/issues
 // antd5 不再需要按需引入插件
-import imp from 'vite-plugin-imp';
+// import imp from 'vite-plugin-imp';
 
 // https://github.com/michaeltaranto/less-vars-to-js
 import lessToJS from 'less-vars-to-js';
