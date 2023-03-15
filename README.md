@@ -80,3 +80,8 @@ npx husky add .husky/pre-commit "npx lint-staged"
 git add .husky/pre-commit
 ``` 
 
+4. Mac 下 husky 无效问题解决
+```
+$ chmod 700 .husky/commit-msg 
+$ chmod 700 .husky/pre-commit 
+```
