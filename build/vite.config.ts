@@ -51,7 +51,7 @@ const dev = defineConfig({
 // build config
 const build = defineConfig({
     build: {
-        minify:false,
+        // minify:false,
         outDir: dir.outDir,
         assetsDir: dir.assetsDir
     }
