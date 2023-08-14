@@ -9,23 +9,23 @@ import { useI18n } from '@/i18n';
 import zhCN from 'antd/locale/zh_CN';
 import enUS from 'antd/locale/en_US';
 const LOCALE: Record<string, typeof zhCN> = {
-    'zh-CN': zhCN,
-    'en-US': enUS,
-    default: zhCN,
+  'zh-CN': zhCN,
+  'en-US': enUS,
+  default: zhCN,
 };
 
 function App() {
-    const { init, getCurrentLocale } = useI18n();
-    const [loading, setLoading] = useState(false);
-    const [locale, setLocale] = useState(LOCALE['default']);
-    useEffect(() => {
-        init().then(() => {
-            setLoading(false);
-            setLocale(LOCALE[getCurrentLocale()] ?? LOCALE['default']);
-        });
-    }, []);
+  const { init, getCurrentLocale } = useI18n();
+  const [loading, setLoading] = useState(false);
+  const [locale, setLocale] = useState(LOCALE['default']);
+  useEffect(() => {
+    init().then(() => {
+      setLoading(false);
+      setLocale(LOCALE[getCurrentLocale()] ?? LOCALE['default']);
+    });
+  }, []);
 
-    return <ConfigProvider locale={locale}>{!loading ? <Routers /> : null}</ConfigProvider>;
+  return <ConfigProvider locale={locale}>{!loading ? <Routers /> : null}</ConfigProvider>;
 }
 
 export default App;

@@ -17,56 +17,60 @@ import lessToJS from 'less-vars-to-js';
 // import basicSsl from '@vitejs/plugin-basic-ssl'
 
 
+import UnoCSS from 'unocss/vite';
+
+
 import { defineConfig } from 'vite';
 import { dir, server, env, alias } from './config';
 
 const themeVariables = lessToJS(
-    readFileSync(join(dir.src, 'assets', 'less', 'variables.less'), 'utf8')
+  readFileSync(join(dir.src, 'assets', 'less', 'variables.less'), 'utf8')
 );
 
 // base config
 const base = defineConfig({
-    ...env,
-    base: dir.base,
-    publicDir: dir.publicDir,
-    resolve: { alias },
-    css: {
-        devSourcemap: true,
-        preprocessorOptions: {
-            less: {
-                javascriptEnabled: true,
-                // 重写 less 变量，定制样式
-                modifyVars: themeVariables,
-                additionalData: '@import "@/assets/less/mixin.less";'
-            }
-        }
+  ...env,
+  base: dir.base,
+  publicDir: dir.publicDir,
+  resolve: { alias },
+  css: {
+    devSourcemap: true,
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        // 重写 less 变量，定制样式
+        modifyVars: themeVariables,
+        additionalData: '@import "@/assets/less/mixin.less";'
+      }
     }
+  }
 });
 
 // dev config
 const dev = defineConfig({
-    server
+  server
 });
 
 // build config
 const build = defineConfig({
-    build: {
-        // minify:false,
-        outDir: dir.outDir,
-        assetsDir: dir.assetsDir
-    }
+  build: {
+    // minify:false,
+    outDir: dir.outDir,
+    assetsDir: dir.assetsDir
+  }
 });
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    ...base,
-    ...dev,
-    ...build,
-    plugins: [
-        react(),
-        // basicSsl(),
+  ...base,
+  ...dev,
+  ...build,
+  plugins: [
+    react(),
+    UnoCSS({ configFile: join(dir.cwd, './unocss.config.ts') }),
+    // basicSsl(),
     /* legacy({
         targets: ['defaults', 'not IE 11']
     }) */
-    ]
+  ]
 });

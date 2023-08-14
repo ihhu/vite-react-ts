@@ -12,8 +12,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "prettier --write --ignore-unknown",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "dependencies": {
@@ -39,6 +38,11 @@
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "@unocss/core": "^0.55.0",
+    "@unocss/preset-rem-to-px": "^0.55.0",
+    "@unocss/transformer-compile-class": "^0.55.0",
+    "@unocss/transformer-directives": "^0.55.0",
+    "@unocss/transformer-variant-group": "^0.55.0",
     "@vitejs/plugin-react": "^4.0.4",
     "eslint": "^8.47.0",
     "eslint-plugin-react": "^7.33.1",
@@ -48,6 +52,7 @@
     "lint-staged": "^14.0.0",
     "prettier": "^3.0.1",
     "typescript": "^5.1.6",
+    "unocss": "^0.55.0",
     "vite": "^4.4.9"
   }
 }
