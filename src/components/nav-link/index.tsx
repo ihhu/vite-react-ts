@@ -17,7 +17,7 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(({ activeClassName, 
       className={({ isActive }) => [props.className, isActive ? activeClassName : null].filter(Boolean).join(' ')}
       style={({ isActive }) => ({
         ...props.style,
-        ...(isActive ? activeStyle : null),
+        ...(isActive ? activeStyle : null)
       })}
     />
   );

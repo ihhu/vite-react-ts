@@ -1,14 +1,13 @@
 import { join } from 'path';
 import { ServerOptions } from 'vite';
 
-
 const server: ServerOptions = {
   host: '0.0.0.0',
   proxy: {
     '/api': {
       target: 'http://localhost',
-      changeOrigin: true,
-    },
+      changeOrigin: true
+    }
   }
 };
 
@@ -18,7 +17,7 @@ const dir = {
   base: '/',
   outDir: 'dist',
   assetsDir: 'assets',
-  publicDir: 'public',
+  publicDir: 'public'
 };
 
 const env = {
@@ -31,9 +30,4 @@ const alias = {
   '@': join(dir.cwd, 'src')
 };
 
-export {
-  dir,
-  server,
-  env,
-  alias
-};
+export { dir, server, env, alias };

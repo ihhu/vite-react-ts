@@ -11,7 +11,7 @@ import enUS from 'antd/locale/en_US';
 const LOCALE: Record<string, typeof zhCN> = {
   'zh-CN': zhCN,
   'en-US': enUS,
-  default: zhCN,
+  default: zhCN
 };
 
 function App() {

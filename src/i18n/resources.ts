@@ -3,11 +3,11 @@ import en_US from './locales/en_US.json';
 
 const resources = {
   'zh-CN': {
-    translation: zh_CN,
+    translation: zh_CN
   },
   'en-US': {
-    translation: en_US,
-  },
+    translation: en_US
+  }
 };
 
 export default resources;

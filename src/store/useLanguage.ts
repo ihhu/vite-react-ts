@@ -2,7 +2,7 @@ import { atom, useRecoilState } from 'recoil';
 
 enum KEYS {
   localeList = 'language/localeList',
-  currentLocale = 'language/currentLocale',
+  currentLocale = 'language/currentLocale'
 }
 interface LocaleInfo {
   id: 'zh-CN' | 'en-US';
@@ -14,13 +14,13 @@ const language = {
     key: KEYS.localeList,
     default: [
       { id: 'zh-CN', value: '简体中文' },
-      { id: 'en-US', value: 'English' },
-    ],
+      { id: 'en-US', value: 'English' }
+    ]
   }),
   currentLocale: atom<LocaleInfo['id']>({
     key: KEYS.currentLocale,
-    default: 'zh-CN',
-  }),
+    default: 'zh-CN'
+  })
 };
 
 import { setCurrentLocale } from '@/i18n';
@@ -31,6 +31,6 @@ export default function useLanguage() {
     updateLocale(locale: LocaleInfo['id']) {
       setCurrentLocale(locale);
       setLocale(locale);
-    },
+    }
   };
 }

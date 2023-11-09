@@ -15,13 +15,13 @@ const HTTP_STATUS = {
   BAD_GATEWAY: 502,
   SERVICE_UNAVAILABLE: 503,
   GATEWAY_TIMEOUT: 504,
-  REFRESH_PAGE: 800,
+  REFRESH_PAGE: 800
 };
 
 // axios 实例
 const http = axios.create({
   baseURL: '/api',
-  timeout: 6000,
+  timeout: 6000
 });
 // 请求拦截
 http.interceptors.request.use(
@@ -30,7 +30,7 @@ http.interceptors.request.use(
       req.headers['Accept-Language'] = getCurrentLocale();
     }
     const exData = {
-      clientTimestamp: Date.now(),
+      clientTimestamp: Date.now()
     };
     switch (req.method) {
       case 'get':

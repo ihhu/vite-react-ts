@@ -46,6 +46,6 @@ export function textFallback(text?: string | null) {
 export function scrollToTop(selector: string, behavior: ScrollBehavior = 'smooth') {
   document.querySelector(selector)?.scrollTo({
     top: 0,
-    behavior,
+    behavior
   });
 }

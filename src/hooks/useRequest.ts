@@ -21,7 +21,7 @@ const useCancelRequest: Plugin<any, any> = fetchInstance => {
   return {
     onCancel: () => {
       abort.current?.abort();
-    },
+    }
   };
 };
 

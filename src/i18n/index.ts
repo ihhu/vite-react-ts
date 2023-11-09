@@ -8,7 +8,7 @@ const languageKey = 'lang';
 const RESOURCE_MAP: { [s: string]: string } = {
   'zh-CN': 'zh_CN',
   'en-US': 'en_US',
-  default: 'zh-CN',
+  default: 'zh-CN'
 };
 // 请求加锁
 let flag = false;
@@ -51,7 +51,7 @@ export function useI18n() {
               lookupQuerystring: languageKey,
               lookupLocalStorage: languageKey,
               order: ['querystring', 'localStorage', 'navigator'],
-              caches: ['localStorage'],
+              caches: ['localStorage']
             },
             backend: {
               /**
@@ -78,11 +78,11 @@ export function useI18n() {
               /**
                * 是否允许携带登录凭证
                */
-              withCredentials: true,
+              withCredentials: true
             },
             react: {
               // 是否需要在最外层加入Suspense标签
-              useSuspense: false,
+              useSuspense: false
             },
             // lng: 'zh-CN',
             fallbackLng: 'zh-CN',
@@ -102,8 +102,8 @@ export function useI18n() {
               }
             },
             interpolation: {
-              escapeValue: false, // not needed for react as it escapes by default
-            },
+              escapeValue: false // not needed for react as it escapes by default
+            }
           },
           function () {
             // i18n插件初始化完成或异常时的回调函数
@@ -121,7 +121,7 @@ export function useI18n() {
   return {
     setCurrentLocale,
     getCurrentLocale,
-    init,
+    init
   };
 }
 export default i18n;
