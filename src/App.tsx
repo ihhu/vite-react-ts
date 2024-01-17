@@ -5,6 +5,7 @@ import { ConfigProvider } from 'antd';
 import Routers from '@/router/index';
 
 import { useI18n } from '@/i18n';
+import useLanguage, { LocaleInfo } from '@/store/useLanguage';
 
 import zhCN from 'antd/locale/zh_CN';
 import enUS from 'antd/locale/en_US';
@@ -17,10 +18,12 @@ const LOCALE: Record<string, typeof zhCN> = {
 function App() {
   const { init, getCurrentLocale } = useI18n();
   const [loading, setLoading] = useState(false);
+  const { updateLocale } = useLanguage();
   const [locale, setLocale] = useState(LOCALE['default']);
   useEffect(() => {
     init().then(() => {
       setLoading(false);
+      updateLocale(getCurrentLocale() as LocaleInfo['id']);
       setLocale(LOCALE[getCurrentLocale()] ?? LOCALE['default']);
     });
   }, []);

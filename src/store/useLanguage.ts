@@ -1,31 +1,22 @@
-import { atom, useRecoilState } from 'recoil';
+import { atom, useAtom } from 'jotai';
 
-enum KEYS {
-  localeList = 'language/localeList',
-  currentLocale = 'language/currentLocale'
-}
-interface LocaleInfo {
+export interface LocaleInfo {
   id: 'zh-CN' | 'en-US';
   value: string;
 }
 
 const language = {
-  localeList: atom<LocaleInfo[]>({
-    key: KEYS.localeList,
-    default: [
-      { id: 'zh-CN', value: '简体中文' },
-      { id: 'en-US', value: 'English' }
-    ]
-  }),
-  currentLocale: atom<LocaleInfo['id']>({
-    key: KEYS.currentLocale,
-    default: 'zh-CN'
-  })
+  localeList: atom<LocaleInfo[]>([
+    { id: 'zh-CN', value: '简体中文' },
+    { id: 'en-US', value: 'English' }
+  ]),
+  currentLocale: atom<LocaleInfo['id']>('zh-CN')
 };
+console.log('language:', language);
 
 import { setCurrentLocale } from '@/i18n';
 export default function useLanguage() {
-  const [currentLocale, setLocale] = useRecoilState(language.currentLocale);
+  const [currentLocale, setLocale] = useAtom(language.currentLocale);
   return {
     currentLocale,
     updateLocale(locale: LocaleInfo['id']) {
@@ -34,3 +25,5 @@ export default function useLanguage() {
     }
   };
 }
+
+export * from 'jotai';
