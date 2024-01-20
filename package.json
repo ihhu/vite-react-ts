@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "VITE_CJS_TRACE=true vite -c ./build/vite.config.ts",
-    "build": "tsc && vite build -c ./build/vite.config.ts",
+    "build": "vite build -c ./build/vite.config.ts",
     "preview": "vite preview",
     "tsc": "tsc --watch",
     "prepare": "husky install",
